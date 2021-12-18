@@ -81,7 +81,7 @@ void MainWindow::on_pushButton_3_clicked()
     QFile file(file_name);
     if(!file.open(QFile::WriteOnly |QFile::Text)){QMessageBox::warning(this,"Warning!","file is not Saved");}
     QTextStream out(&file);
-    QString text=ui->plainTextEdit->toPlainText();
+    QString text=ui->plainTextEdit_2->toPlainText();
     out<<text;
     file.flush();
     file.close();

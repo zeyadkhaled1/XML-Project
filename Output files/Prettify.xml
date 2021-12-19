@@ -1,76 +1,72 @@
-<?xml version="1.0"?>
-  <class>
-    <student>
+<class>
+   <student>
       <id>
-         101
-       </id>
-      <firstname>
-         Naman
-       </firstname>
-      <lastname>
-        Kumar
-      </lastname>
-      <subject>
-        Math
-      </subject>
-      <marks>
-        83
-      </marks>
-    </student>
-    <student>
-        
-        <id>
-        102
+          101
       </id>
       <firstname>
-        Kapil
+          Naman
       </firstname>
       <lastname>
-        Kumar
+          Kumar
       </lastname>
       <subject>
-        Chemistry
+          Math
       </subject>
       <marks>
-        60
+          83
       </marks>
-    </student>
-    <student>
-        
-        <id>
-        103
+   </student>
+   <student>
+      <id>
+          102
       </id>
       <firstname>
-        Harsh
+          Kapil
       </firstname>
       <lastname>
-        Singh
+          Kumar
       </lastname>
       <subject>
-        English
+          Chemistry
       </subject>
       <marks>
-        70
+          60
       </marks>
-    </student>
-    <student>
-        
-        <id>
-        104
+   </student>
+   <student>
+      <id>
+          103
       </id>
       <firstname>
-        Jitesh
-      </first>
+          Harsh
+      </firstname>
       <lastname>
-        Singh
-      </lase>
+          Singh
+      </lastname>
       <subject>
-        Physics
-      </suct>
+          English
+      </subject>
       <marks>
-        76
+          70
       </marks>
-    </student>
-  </class>
+   </student>
+   <student>
+      <id>
+          104
+      </id>
+      <firstname>
+          Jitesh
+      </firstname>
+      <lastname>
+          Singh
+      </lastname>
+      <subject>
+          Physics
+      </subject>
+      <marks>
+          76
+      </marks>
+   </student>
+</class>
 
 

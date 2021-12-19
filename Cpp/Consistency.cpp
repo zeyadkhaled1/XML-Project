@@ -1,9 +1,4 @@
 #include "Consistency.h"
-#include<iostream>
-#include<string>
-#include<stack>
-#include<vector>
-#include<iterator>
 #include "Prettify.h"
 #include"minify.h"
 using namespace std;

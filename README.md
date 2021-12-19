@@ -3,7 +3,7 @@ The program can view, edit and save XML files. In addition, it has the ability t
 
 ## Gui
 <p align="center">
-  <img src="http://some_place.com/image.png" />
+  <img src="https://user-images.githubusercontent.com/72843476/146682105-1bf91e94-5119-4bdc-b1d3-36595cf8ff19.png" />
 </p>
 
 

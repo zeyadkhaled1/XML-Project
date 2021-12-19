@@ -48,9 +48,27 @@ string Check_XML_Consistency(string xml_file)
                     correct = xml_check_close_inner.top();
                     xml_check_close_inner.pop();
 
-                    begin_index = pre_index + (int)correct.size() + 4;
+                    begin_index = pre_index + correct.size() + 4;
                     true_index = begin_index + diffrence;
                     i = true_index;
+                    pre_index = begin_index - 1;
+                }
+                
+                if (!xml_check_close_outer.empty())
+                {
+                    if (xml_check_close_outer.top() == xml_edit.substr(begin_index, i - begin_index))
+                    {
+                        xml_edit.insert(pre_index, ">");
+                        xml_edit.insert(pre_index, xml_check_close_outer.top());
+                        xml_edit.insert(pre_index, "</");
+                        correct = xml_check_close_outer.top();
+                        xml_check_close_outer.pop();
+
+                        begin_index = pre_index + correct.size() + 4;
+                        true_index = begin_index + diffrence;
+                        i = true_index;
+                        pre_index = begin_index - 1;
+                    }
                 }
                 i++;
                 while (xml_edit[i] == '\t' || xml_edit[i] == '\n' || xml_edit[i] == ' ') i++;

@@ -40,7 +40,7 @@ string Check_XML_Errors(string xml_file)
         j = (int)xml_edit.find(">", h);
         xml_edit.erase(h, j - h + 1);
     }
-xml_edit= minify_XML(minify_XML(minify_XML(xml_edit)));
+    xml_edit= minify_XML(minify_XML(minify_XML(xml_edit)));
     for (int i = 0; i < xml_edit.length(); i++)
     {
         if (xml_edit[i] == '<')
@@ -64,6 +64,22 @@ xml_edit= minify_XML(minify_XML(minify_XML(xml_edit)));
                     begin_index = pre_index + 17;
                     true_index = begin_index + diffrence;
                     i = true_index;
+                    pre_index = begin_index - 2;
+                }
+                
+                if (!xml_check_close_outer.empty())
+                {
+                    if (xml_check_close_outer.top() == xml_edit.substr(begin_index, i - begin_index))
+                    {
+                        xml_edit.insert(pre_index, "\n--> error here");
+                        Error_tag_name.push(xml_check_close_outer.top());
+                        xml_check_close_outer.pop();
+
+                        begin_index = pre_index + 17;
+                        true_index = begin_index + diffrence;
+                        i = true_index;
+                        pre_index = begin_index - 2;
+                    }
                 }
                 i++;
                 while (xml_edit[i] == '\t' || xml_edit[i] == '\n' || xml_edit[i] == ' ') i++;

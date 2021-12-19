@@ -1,3 +1,4 @@
+#include "Prettify.h"
 #include "minify.h"
 
 string format_XML(string xml_file)

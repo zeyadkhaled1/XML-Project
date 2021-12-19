@@ -200,6 +200,5 @@ string Check_XML_Consistency(string xml_file)
         xml_check_close_outer.pop();
     }
     flage = true;
-    xml_edit=format_XML(xml_edit);
     return xml_edit;
 }

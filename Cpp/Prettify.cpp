@@ -31,7 +31,7 @@ string format_XML(string xml_file)
             xml_edit = xml_edit_2;
         }
     }
-   xml_edit= minify_XML(xml_edit);
+   xml_edit= minify_XML(minify_XML(minify_XML(xml_edit)));
     for (int i = 0; i < xml_edit.length(); i++)
     {
         if (xml_edit[i] == '<')
@@ -66,10 +66,10 @@ string format_XML(string xml_file)
 
                     for (int iter = 0; iter < n_tabs; iter++)
                     {
-                        xml_edit.insert(i, "  ");
-                        i += 2;
+                        xml_edit.insert(i, "   ");
+                        i += 3;
                     }
-                    xml_edit.insert(i, "  ");
+                    xml_edit.insert(i, "    ");
 
                     while (xml_edit[i] != '<') i++;
                     i--;
@@ -83,8 +83,8 @@ string format_XML(string xml_file)
 
                     for (int iter = 0; iter < n_tabs; iter++)
                     {
-                        xml_edit.insert(i, "  ");
-                        i += 2;
+                        xml_edit.insert(i, "   ");
+                        i += 3;
                     }
                     while (xml_edit[i] == '\t' || xml_edit[i] == '\n' || xml_edit[i] == ' ') i++;
                     i--;
@@ -109,8 +109,8 @@ string format_XML(string xml_file)
 
                     for (int iter = 0; iter < n_tabs; iter++)
                     {
-                        xml_edit.insert(i, "  ");
-                        i += 2;
+                        xml_edit.insert(i, "   ");
+                        i += 3;
                     }
                     while (xml_edit[i] != '>')i++;
                     if (xml_edit[i + 1] != '\n')
@@ -127,8 +127,8 @@ string format_XML(string xml_file)
                             {
                                 for (int iter = 0; iter < n_tabs; iter++)
                                 {
-                                    xml_edit.insert(i, "  ");
-                                    i += 2;
+                                    xml_edit.insert(i, "   ");
+                                    i += 3;
                                 }
                             }
                             xml_check_close_inner.pop();
@@ -151,8 +151,8 @@ string format_XML(string xml_file)
                     n_tabs--;
                     for (int iter = 0; iter < n_tabs; iter++)
                     {
-                        xml_edit.insert(i, "  ");
-                        i += 2;
+                        xml_edit.insert(i, "   ");
+                        i += 3;
                     }
 
                     while (xml_edit[i] != '>')i++;
@@ -173,8 +173,8 @@ string format_XML(string xml_file)
                             {
                                 for (int iter = 0; iter < n_tabs; iter++)
                                 {
-                                    xml_edit.insert(i, "  ");
-                                    i += 2;
+                                    xml_edit.insert(i, "   ");
+                                    i += 3;
                                 }
                                 while (xml_edit[i] != '<') i++;
                             }

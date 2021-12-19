@@ -40,7 +40,7 @@ string Check_XML_Errors(string xml_file)
         j = (int)xml_edit.find(">", h);
         xml_edit.erase(h, j - h + 1);
     }
-
+xml_edit= minify_XML(minify_XML(minify_XML(xml_edit)));
     for (int i = 0; i < xml_edit.length(); i++)
     {
         if (xml_edit[i] == '<')

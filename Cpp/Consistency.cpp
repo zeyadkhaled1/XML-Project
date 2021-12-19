@@ -1,11 +1,6 @@
 #include "Consistency.h"
-#include<iostream>
-#include<string>
-#include<stack>
-#include<vector>
-#include<iterator>
 #include "Prettify.h"
-#include"minify.h"
+#include "minify.h"
 using namespace std;
 
 string Check_XML_Consistency(string xml_file)

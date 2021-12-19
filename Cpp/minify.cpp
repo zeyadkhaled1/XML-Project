@@ -2,7 +2,7 @@
 string remove_spaces(const string& s)
 {
     int last = (int)s.size() - 1;
-    while (last >= 0 && s[last] == ' ')
+    while (last >= 0 && (s[last] == ' ' || s[last] == '\n'))
         --last;
     return s.substr(0, last + 1);
 }
@@ -57,10 +57,10 @@ string minify_XML(string xml_file)
             }
         }
     }
-    xml_edit.append("\n");
     temp = remove_spaces(xml_edit);
     new_size = (int)temp.size();
     xml_edit.resize(new_size);
+    xml_edit.append("\n");
 
     return xml_edit;
 }

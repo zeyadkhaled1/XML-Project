@@ -1,12 +1,16 @@
 #include "Consistency.h"
+#include<iostream>
+#include<string>
+#include<stack>
+#include<vector>
+#include<iterator>
 #include "Prettify.h"
 #include"minify.h"
 using namespace std;
 
 string Check_XML_Consistency(string xml_file)
 {
-    static string xml_edit = xml_file;
-    string xml_edit_2 = xml_file;
+    string xml_edit = xml_file;
     int pre_index;
     int begin_index;
     int true_index;
@@ -21,20 +25,6 @@ string Check_XML_Consistency(string xml_file)
     string xml_check_close_string;
     string check_top;
     string correct;
-
-    static bool flage = false;
-
-    if (flage == true)
-    {
-        if (xml_edit == xml_edit_2)
-        {
-            return xml_file;
-        }
-        else
-        {
-            xml_edit = xml_edit_2;
-        }
-    }
     unsigned int h = (int)xml_edit.find("<", 0), j;
     if (xml_edit.substr(h + 1, 1) == "?")
     {
@@ -97,17 +87,61 @@ string Check_XML_Consistency(string xml_file)
 
                 if (!xml_check_close_inner.empty())
                 {
-                    xml_edit.insert(pre_index, ">");
-                    xml_edit.insert(pre_index, xml_check_close_inner.top());
-                    xml_edit.insert(pre_index, "</");
+                    if (xml_check_close_inner.top() == xml_check_close_string)
+                    {
+                        xml_check_close_inner.pop();
+                    }
+                    else if (!xml_check_close_outer.empty())
+                    {
+                        while (!xml_check_close_outer.empty())
+                        {
+                            if (xml_check_close_outer.top() != xml_check_close_string)
+                            {
+                                xml_check_close_outer_temp.push(xml_check_close_outer.top());
+                                xml_check_close_outer.pop();
+                            }
+                            else
+                            {
+                                while (!xml_check_close_outer_temp.empty())
+                                {
+                                    xml_check_close_outer.push(xml_check_close_outer_temp.top());
+                                    xml_check_close_outer_temp.pop();
+                                }
+                                flag_check = 1;
+                                break;
+                            }
+                        }
+                        if (flag_check == 1)
+                        {
+                            xml_edit.insert(pre_index, ">");
+                            xml_edit.insert(pre_index, xml_check_close_inner.top());
+                            xml_edit.insert(pre_index, "</");
 
-                    correct = xml_check_close_inner.top();
-                    xml_check_close_inner.pop();
+                            correct = xml_check_close_inner.top();
+                            xml_check_close_inner.pop();
 
-                    begin_index = pre_index + (int)correct.size() + 5;
-                    i = begin_index + (int)xml_check_close_string.size();
-                    xml_edit.erase(begin_index - 2, i - begin_index + 3);
-                    i = begin_index - 3;
+                            begin_index = pre_index + (int)correct.size() + 2;
+                            i = begin_index;
+                        }
+                        else
+                        {
+                            while (!xml_check_close_outer_temp.empty())
+                            {
+                                xml_check_close_outer.push(xml_check_close_outer_temp.top());
+                                xml_check_close_outer_temp.pop();
+                            }
+                            xml_edit.insert(pre_index, ">");
+                            xml_edit.insert(pre_index, xml_check_close_inner.top());
+                            xml_edit.insert(pre_index, "</");
+
+                            correct = xml_check_close_inner.top();
+                            xml_check_close_inner.pop();
+
+                            begin_index = pre_index + (int)correct.size() + 2;
+                            i = begin_index;
+                            xml_edit.erase(begin_index + 1, xml_check_close_string.size() + 3);
+                        }
+                    }
                 }
                 else if (!xml_check_close_outer.empty())
                 {
@@ -118,17 +152,6 @@ string Check_XML_Consistency(string xml_file)
 
                     else
                     {
-                        xml_edit.insert(pre_index, ">");
-                        xml_edit.insert(pre_index, xml_check_close_outer.top());
-                        xml_edit.insert(pre_index, "</");
-
-                        correct = xml_check_close_outer.top();
-                        xml_check_close_outer.pop();
-
-                        begin_index = pre_index + (int)correct.size() + 5;
-                        i = begin_index + (int)xml_check_close_string.size();
-                        pre_index = begin_index - 2;
-
                         while (!xml_check_close_outer.empty())
                         {
                             if (xml_check_close_outer.top() != xml_check_close_string)
@@ -151,7 +174,7 @@ string Check_XML_Consistency(string xml_file)
                         if (flag_check == 1)
                         {
 
-                            do
+                            while (xml_check_close_outer.top() != xml_check_close_string)
                             {
                                 xml_edit.insert(pre_index, ">");
                                 xml_edit.insert(pre_index, xml_check_close_outer.top());
@@ -161,12 +184,9 @@ string Check_XML_Consistency(string xml_file)
                                 xml_check_close_outer.pop();
 
                                 begin_index = pre_index + (int)correct.size() + 5;
-                                i = begin_index + (int)xml_check_close_string.size();
                                 pre_index = begin_index - 2;
-
-                            } while (xml_check_close_outer.top() != xml_check_close_string);
-
-
+                                i = pre_index - 1;
+                            }
                             flag_check = 0;
                         }
                         else
@@ -186,14 +206,14 @@ string Check_XML_Consistency(string xml_file)
     }
     if (!xml_check_close_inner.empty())
     {
-        xml_edit.append("</"); xml_edit.append(xml_check_close_inner.top()); xml_edit.append(">");
+        xml_edit.append("</"); xml_edit.append(xml_check_close_inner.top()); xml_edit.append(">\n");
         xml_check_close_inner.pop();
     }
     while (!xml_check_close_outer.empty())
     {
-        xml_edit.append("</"); xml_edit.append(xml_check_close_outer.top()); xml_edit.append(">");
+        xml_edit.append("</"); xml_edit.append(xml_check_close_outer.top()); xml_edit.append(">\n");
         xml_check_close_outer.pop();
     }
-    flage = true;
+    xml_edit = format_XML(minify_XML(minify_XML(minify_XML(xml_edit))));
     return xml_edit;
 }

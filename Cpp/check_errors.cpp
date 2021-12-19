@@ -1,6 +1,6 @@
-#include "Prettify.h"
-#include "minify.h"
-#include "check_errors.h"
+#include"Prettify.h"
+#include"minify.h"
+#include"check_errors.h"
 
 
 string Check_XML_Errors(string xml_file)

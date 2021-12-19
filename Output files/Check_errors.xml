@@ -1,41 +1,80 @@
-  
-<class>  
-    <student>  
-        <id> 101 </id>  
-        <firstname> Naman --> error here</firs>  
-        <lastname>Kumar</lastname>  
-        <subject>Math--> error here</subj>  
-        <marks>83</marks>  
-    </student>  
-      
-    <student>  
-        <id>102</id>  
-        <firstname>Kapil</firstname>  
-        <lastname>Kumar</lastname>  
-        <subject>Chemistry</subject>  
-        <marks>60</marks>  
-    </student>  
-  
-    <student>  
-        <id>103</id>  
-        <firstname>Harsh</firstname>  
-        <lastname>Singh</lastname>  
-        <subject>English</subject>  
-        <marks>70</marks>  
-    </student>  
-  
-    <student>  
-        <id>104</id>  
-        <firstname>Jitesh</firstname>  
-        <lastname>Singh</lastname>  
-        <subject>Physics</subject>  
-        <marks>76</marks>  
-    </student>  
-  
-</class>  
+<class>
+<student>
+<id>
+101
+--> error here</ahmed>
+<firstname>
+Naman
+</firstname>
+<lastname>
+Kumar
+--> error here</id>
+<subject>
+Math
+</subject>
+<marks>
+83
+</marks>
+</student>
+<student>
+<id>
+102
+</id>
+<firstname>
+Kapil
+</firstname>
+<lastname>
+Kumar
+</lastname>
+<subject>
+Chemistry
+</subject>
+<marks>
+60
+</marks>
+</student>
+<student>
+<id>
+103
+</id>
+<firstname>
+Harsh
+</firstname>
+<lastname>
+Singh
+</lastname>
+<subject>
+English
+</subject>
+<marks>
+70
+</marks>
+</student>
+<student>
+<id>
+104
+</id>
+<firstname>
+Jitesh
+</firstname>
+<lastname>
+Singh
+--> error here
+<subject>
+Physics
+</subject>
+<marks>
+76
+--> error here
+--> error here
+--> error here
 
 
 Tags with Errors:
 *****************
-subject
-firstname
+class
+student
+marks
+lastname
+lastname
+id

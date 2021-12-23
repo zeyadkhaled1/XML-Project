@@ -69,8 +69,39 @@ string Check_XML_Errors(string xml_file)
                 
                 if (!xml_check_close_outer.empty())
                 {
-                    if (xml_check_close_outer.top() == xml_edit.substr(begin_index, i - begin_index))
+                    while (!xml_check_close_outer.empty())
                     {
+                        if (xml_check_close_outer.top() != xml_edit.substr(begin_index, i - begin_index))
+                        {
+                            xml_check_close_outer_temp.push(xml_check_close_outer.top());
+                            xml_check_close_outer.pop();
+                        }
+                        else
+                        {
+                            while (!xml_check_close_outer_temp.empty())
+                            {
+                                xml_check_close_outer.push(xml_check_close_outer_temp.top());
+                                xml_check_close_outer_temp.pop();
+                            }
+                            flag_check = 1;
+                            break;
+                        }
+                    }
+
+                    if (flag_check == 1)
+                    {
+                        while (xml_check_close_outer.top() != xml_edit.substr(begin_index, i - begin_index))
+                        {
+                            xml_edit.insert(pre_index, "\n--> error here");
+                            Error_tag_name.push(xml_check_close_outer.top());
+                            xml_check_close_outer.pop();
+
+                            begin_index = pre_index + 17;
+                            true_index = begin_index + diffrence;
+                            i = true_index;
+                            pre_index = begin_index - 2;
+                        }
+
                         xml_edit.insert(pre_index, "\n--> error here");
                         Error_tag_name.push(xml_check_close_outer.top());
                         xml_check_close_outer.pop();
@@ -79,6 +110,15 @@ string Check_XML_Errors(string xml_file)
                         true_index = begin_index + diffrence;
                         i = true_index;
                         pre_index = begin_index - 2;
+                        flag_check = 0;
+                    }
+                    else
+                    {
+                        while (!xml_check_close_outer_temp.empty())
+                        {
+                            xml_check_close_outer.push(xml_check_close_outer_temp.top());
+                            xml_check_close_outer_temp.pop();
+                        }
                     }
                 }
                 i++;

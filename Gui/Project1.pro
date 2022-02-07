@@ -10,9 +10,11 @@ CONFIG += c++11
 SOURCES += \
     Compression.cpp \
     Consistency.cpp \
+    GraphDrawing.cpp \
     Prettify.cpp \
     Xml_to_Json.cpp \
     check_errors.cpp \
+    graph.cpp \
     main.cpp \
     mainwindow.cpp \
     minify.cpp
@@ -20,14 +22,25 @@ SOURCES += \
 HEADERS += \
     Compression.h \
     Consistency.h \
+    GraphDrawing.h \
     Prettify.h \
     Xml_to_Json.h \
     check_errors.h \
+    graph.h \
     mainwindow.h \
     minify.h
 
 FORMS += \
+    graph.ui \
     mainwindow.ui
+
+
+
+GRAPHVIZ_PATH = "C:/Program Files/Graphviz"
+DEFINES += WIN32_DLL
+DEFINES += GVDLL
+INCLUDEPATH += $$GRAPHVIZ_PATH/include/graphviz
+LIBS += -L$$GRAPHVIZ_PATH/lib -lgvc -lcgraph  -lcdt
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -37,3 +50,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     Res.qrc
 RC_ICONS =application_icon.ico
+

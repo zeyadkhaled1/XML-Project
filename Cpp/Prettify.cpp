@@ -1,5 +1,9 @@
-#include "Prettify.h"
-#include "minify.h"
+#include<iostream>
+#include<string>
+#include<stack>
+#include<vector>
+#include"minify.h"
+using namespace std;
 
 string format_XML(string xml_file)
 {

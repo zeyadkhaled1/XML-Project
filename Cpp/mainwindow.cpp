@@ -11,7 +11,7 @@
 #include <QSaveFile>
 #include "Bit.h"
 #include <fstream>
-
+#include "GraphDrawing.h"
 
 using namespace std;
 MainWindow::MainWindow(QWidget *parent)
@@ -156,5 +156,28 @@ void MainWindow::on_pushButton_6_clicked()
     string Result=Check_XML_Errors(x);
     QString str = QString::fromStdString(Result);
     ui->plainTextEdit_2->setPlainText(str);
+}
+
+
+void MainWindow::on_pushButton_10_clicked()
+{
+    QString z =ui->plainTextEdit->toPlainText();
+    string x=z.toStdString();
+    string Result=Graph_present(x);
+
+    QString file_name="Graph.dot";
+    QFile file(file_name);
+    if(!file.open(QFile::WriteOnly |QFile::Text)){QMessageBox::warning(this,"Warning!","file is not Saved");}
+    QTextStream out(&file);
+    QString text=QString::fromStdString(Result);
+    out<<text;
+    file.flush();
+    file.close();
+    system("Graphviz\\bin\\dot -Tpng Graph.dot -o Graph.png");
+    graph = new Graph(this);
+    graph->show();
+
+
+
 }
 

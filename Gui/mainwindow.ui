@@ -126,6 +126,13 @@
       </item>
      </layout>
     </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_10">
+      <property name="text">
+       <string>Graph View</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -247,6 +254,22 @@
     <hint type="destinationlabel">
      <x>125</x>
      <y>394</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>plainTextEdit_2</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>159</x>
+     <y>430</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>378</x>
+     <y>379</y>
     </hint>
    </hints>
   </connection>

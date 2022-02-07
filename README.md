@@ -3,7 +3,7 @@ XML files can be viewed, edited, and saved using this application. It also has t
 
 ## Gui
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/72843476/146682105-1bf91e94-5119-4bdc-b1d3-36595cf8ff19.png" />
+  <img width="600" height="550" src="https://user-images.githubusercontent.com/85368475/152881017-e8c9ce5f-0992-4532-8749-bb2ec9569eff.PNG">
 </p>
 
 

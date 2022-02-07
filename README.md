@@ -1,5 +1,5 @@
 # XML-Project
-XML files can be viewed, edited, and saved using this application. It also has the ability to detect and resolve a variety of issues in the XML file, such as missing tag terminator or incorrect terminator. Another feature is minifying and prettifying the XML file, which involves removing or adding spaces before each tag to reduce file size or restore format. It also has the capability of compressing the XML file to roughly half its original size. It also has the ability to convert an XML file to a JSON file.
+XML files can be viewed, edited, and saved using this application. It also has the ability to detect and resolve a variety of issues in the XML file, such as missing tag terminator or incorrect terminator. Another feature is minifying and prettifying the XML file, which involves removing or adding spaces before each tag to reduce file size or restore format. It also has the capability of compressing the XML file to roughly half its original size. It also has the ability to convert an XML file to a JSON file , and it can also representing the users data using Graph (users data in a social network).
 
 ## Gui
 <p align="center">

@@ -26,7 +26,7 @@ string Graph_present(string xml_file)
 {
 
     string my_graph = "digraph G{subgraph cluster_p {label = Graph;node [shape=record fontname=Arial color = blue];edge [color = red];";
-    string id = "<id>" , follower = "<follower>" , name = "<name>" , user = "</student>" , user_id , user_name , user_id_name;
+    string id = "<id>" , follower = "<follower>" , name = "<name>" , user = "</user>" , user_id , user_name , user_id_name;
     int found_name , found_id , found_user , found_follower;
 
     for (int i = 0; i < xml_file.length(); i++)
